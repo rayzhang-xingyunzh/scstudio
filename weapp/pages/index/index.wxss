@@ -1,0 +1,28 @@
+/* pages/index/index.wxss */
+
+swiper-item video{
+  width: 100%;
+  height: 100%;
+}
+
+.banner-field{
+  width: 750rpx;
+  height: 450rpx;
+}
+
+.banner-field swiper{
+  width: 100%;
+  height: 100%;
+}
+
+.action-field{
+  background-color: whitesmoke;
+  height: 200rpx;
+  width: 750rpx;
+}
+
+.action{
+  float: left;
+  width: 185rpx;
+  height: 185rpx;
+}
