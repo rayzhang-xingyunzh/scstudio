@@ -1,0 +1,17 @@
+
+<view>
+  <text>绑定手机</text>
+
+  <view class='form_cell_phone form_cell'>
+    <input bindblur='onBlurTel' confirm-type='done' type='number'>{{tel}}</input>
+    <button>获取二维码</button>
+  </view>
+
+  <view class='form_cell'>
+    <input type='number'></input>
+  </view>
+
+  <view>
+    <button catchtap='binding'>绑定</button>
+  </view>
+</view>

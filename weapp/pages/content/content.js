@@ -1,4 +1,6 @@
 // pages/content/content.js
+var network = require('../../utils/network')
+
 Page({
 
   /**
@@ -15,6 +17,67 @@ Page({
   
   },
 
+  gotoReservation:function(event){
+    this.login(()=>{
+      wx.getStorage({
+        key: 'user',
+        success: function(res) {
+          if(!!res.tel){
+            wx.navigateTo({
+              url: '/pages/reservation/index',
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/phone/index',
+            })
+          }
+        },
+        fail:function(){
+          console.log("get user fail")
+        }
+      })
+      
+    })
+  },
+
+  login: function (callback) {
+
+    var cacheUser = (err,user) => {
+      if(err){
+        console.log("login fail:",err);
+      }else{
+        wx.setStorage({
+          key: 'user',
+          data: user,
+          success:(res)=>{
+            console.log("store success:", res);
+            callback()
+          },
+          fail:(err)=>{
+            console.log("store fail:", err);
+          }
+        })
+      }
+    }
+
+    wx.checkSession({
+      success: () => {
+        wx.getStorageInfo({
+          success: (res) => {
+            console.log(res)
+            if (res.keys.indexOf('token') > -1) {
+              callback();
+            } else {
+              network.login(cacheUser)
+            }
+          },
+        })
+      },
+      fail: () => {
+        network.login(cacheUser)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

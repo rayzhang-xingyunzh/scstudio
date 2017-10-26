@@ -1,0 +1,77 @@
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+html{height: 100%;}
+
+
+.datePanel{
+  padding-top:100px;
+  height: 200px;
+  width: 100%;
+}
+
+.reservation{
+  height: calc(100% - 200px);
+}
+
+.corner-header{
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+.vertical-header-wrapper{
+  overflow: scroll;
+  float: left;
+  width: calc(100% - 100px);
+  height: 100px;
+  background-color: lightgreen;
+}
+
+.vertical-header{
+  width: auto;
+  height: 100px;
+}
+
+.vertical-header-cell{
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+.horizontal-header-wrapper{
+  overflow-y: scroll;
+  float: left;
+  width: 100px;
+  height: calc(100% - 100px);
+  background-color: lightgreen;
+}
+
+.horizontal-header{
+  width: 100px;
+  height: auto;
+}
+
+.horizontal-header-cell{
+  height: 50px;
+  width: 100px;
+}
+
+.offers-wrapper{
+  /*margin-top: 100px;*/
+  overflow: scroll;
+  float: left;
+  width: calc(100% - 100px);
+  height: calc(100% - 100px);
+  background-color: wheat;
+}
+
+.offer{
+  height: 50px;
+  width: 100px;
+  float: left;
+}

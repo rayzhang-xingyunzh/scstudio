@@ -1,2 +1,6 @@
-<!--pages/content/content.wxml-->
-<text>pages/content/content.wxml</text>
+
+<view>
+  <view catchtap='gotoReservation' class='reservation'>
+    登录并进入预定系统
+  </view>
+</view>

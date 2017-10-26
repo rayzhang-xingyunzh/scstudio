@@ -1,0 +1,25 @@
+/* pages/phone/index.wxss */
+
+.form_cell{
+  display: flex;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.form_cell input{
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  border: black 0.5rpx solid;
+  height: 100rpx;
+  width: 100%;
+}
+
+.form_cell_phone input{
+  width: 450rpx;
+}
+
+.form_cell_phone button{
+  width: 300rpx;
+}

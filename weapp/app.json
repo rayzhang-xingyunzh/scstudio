@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/content/content"
+    "pages/content/content",
+    "pages/reservation/index",
+    "pages/myreservation/index",
+    "pages/reserve/index",
+    "pages/phone/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -9,16 +13,19 @@
     "navigationBarTitleText": "星云创新工作室",
     "navigationBarTextStyle": "white"
   },
-  "tabBar":{
-    "color":"black",
-    "selectedColor":"green",
-    "backgroundColor":"white",
-    "list":[{
-      "text": "信息",
-      "pagePath": "pages/index/index"
-    },{
-      "text": "服务",
-      "pagePath":"pages/content/content"
-    }]
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "green",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "text": "信息",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "服务",
+        "pagePath": "pages/content/content"
+      }
+    ]
   }
 }

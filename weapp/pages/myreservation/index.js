@@ -1,4 +1,4 @@
-// pages/.js
+// pages/myreservation/index.js
 Page({
 
   /**

@@ -1,0 +1,26 @@
+<view>
+    <view class="datePanel">
+    <input class="date-picker"/>
+  </view>
+  <view class="reservation">
+    <view class="corner-header">
+
+    </view>
+    <scroll-view class="vertical-header-wrapper">
+      <view class="vertical-header">
+
+      </view>
+    </scroll-view>
+    <scroll-view class="horizontal-header-wrapper">
+      <view class="horizontal-header">
+
+      </view>
+    </scroll-view>
+
+    <scroll-view class="offers-wrapper">
+      <view class="offers">
+
+      </view>
+    </scroll-view>
+  </view>
+</view>
