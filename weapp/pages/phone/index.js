@@ -22,14 +22,22 @@ Page({
     if(this.data.tel.length > 0){
       wx.getStorage({
         key: 'user',
-        success: (res)=> {
-          console.log("id",res)
-          network.bindingTel(res.data.id,this.data.tel,(err)=>{
-            console.log("binding success")
+        success: (value)=> {
+          console.log("user",value)
+          network.bindingTel(value.data.id,this.data.tel,(err,res)=>{
+            
             if(!err){
-              wx.navigateTo({
-                url: '/pages/reservation/index',
+              console.log("binding success", res)
+              wx.setStorage({
+                key: 'user',
+                data: res,
+                success:()=>{
+                  wx.navigateTo({
+                    url: '/pages/reservation/index',
+                  })
+                }
               })
+              
             }else{
               console.log(err)
             }

@@ -1,5 +1,5 @@
 /* pages/content/content.wxss */
 
 .reservation{
-  
+  margin:40rpx;
 }

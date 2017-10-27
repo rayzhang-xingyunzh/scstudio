@@ -2,9 +2,102 @@
 // var baseUrl = 'https://www.camproz.com/clockin';
 var baseUrl = 'http://localhost:7112';
 
+function updateRerservation(updates,callback){
+  console.log(updates)
+  let options = {
+    method: 'POST',
+    url: baseUrl + "/reservation/update",
+    data:updates,
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options)
+}
+
+function myReservation(userid,callback){
+  console.log(userid)
+  let options = {
+    method: 'GET',
+    url: baseUrl + "/reservation?user_id=" + userid,
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options)
+}
+
+function resources(callback){
+  let options = {
+    method:'GET',
+    url:baseUrl + "/resource",
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options,false)
+}
+
+function reserve(reservation,callback){
+  let options = {
+    method:'POST',
+    url:baseUrl + '/reservation/add',
+    data:{
+      resource_id:reservation.resourceId,
+      start_time:reservation.startTime,
+      end_time:reservation.endTime,
+      user_id:reservation.userid,
+      state:"to_be_paid",
+      payment_type:"weapp",
+      surety:reservation.surety
+    },
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options,false)
+}
 
 function bindingTel(userid,telNo,callback){
-  
+
   let options = {
     method: 'POST',
     url: baseUrl + '/user/update',
@@ -14,9 +107,9 @@ function bindingTel(userid,telNo,callback){
     },
     success: function (res) {
       if (res.data.status == "S") {
-        callback(null, res)
+        callback(null, res.data.body)
       } else {
-        callback(res)
+        callback(res.data.body)
       }
 
     },
@@ -138,5 +231,9 @@ function sendReq(options,needToken){
 
 module.exports = {
   login:login,
-  bindingTel: bindingTel
+  bindingTel: bindingTel,
+  resources:resources,
+  reserve:reserve,
+  myReservation: myReservation, 
+  updateRerservation: updateRerservation
 }

@@ -1,18 +1,24 @@
-<view>
-    <view class="datePanel">
+<view class="page">
+  <view>
+    <navigator url='../../pages/reserve/index'>发起预定</navigator>
+    <navigator url='../../pages/myreservation/index'>我的预定</navigator>
+  </view>
+  <view class="datePanel">
     <input class="date-picker"/>
   </view>
   <view class="reservation">
     <view class="corner-header">
 
     </view>
-    <scroll-view class="vertical-header-wrapper">
-      <view class="vertical-header">
-
+    <scroll-view scroll-x="true" class="vertical-header-wrapper">
+      <view class="vertical-headers" style="width:{{verticalHeaders.length * verticalHeaderWidth}}rpx">
+        <view wx:for="{{verticalHeaders}}" wx:key="" class='vertical-header' style='width:{{verticalHeaderWidth}}rpx'>
+          {{item}}
+        </view>
       </view>
     </scroll-view>
-    <scroll-view class="horizontal-header-wrapper">
-      <view class="horizontal-header">
+    <scroll-view scroll-y="true" class="horizontal-header-wrapper">
+      <view class="horizontal-headers">
 
       </view>
     </scroll-view>

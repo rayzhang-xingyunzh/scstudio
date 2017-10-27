@@ -1,1 +1,5 @@
 /* pages/reserve/index.wxss */
+
+.panel{
+  margin:40rpx;
+}

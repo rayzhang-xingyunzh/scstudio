@@ -1,2 +1,6 @@
-<!--pages/myreservation/index.wxml-->
-<text>pages/myreservation/index.wxml</text>
+<view>
+  <view wx:for="{{reservations}}" wx:key="">
+    {{item.id}} {{item.resource.name}} {{item.state}}
+    <button hidden='{{item.state=="cancelled"}}' data-id="{{item.id}}" catchtap='cancelReservation'>取消预定</button>
+  </view>
+</view>

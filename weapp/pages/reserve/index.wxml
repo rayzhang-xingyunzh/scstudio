@@ -1,7 +1,35 @@
-
-
 <view>
-  <view>
-    <label></label>
+  <view class='panel'>
+    <label>资源</label>
+    <radio-group class="radio-group" bindchange="resourceChange">
+      <label class="radio" wx:key="" wx:for="{{resources}}">
+        <radio value="{{item.id}}" checked="{{index == 0}}" />{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+  <view class='panel'>
+    <picker mode="date" value="{{targetDate}}" start="09:00" end="21:00" bindchange="targetDateChange">
+      <view class="picker">
+        选择日期: {{targetDate}}
+      </view>
+    </picker>
+  </view>
+  <view class='panel'>
+    <picker mode="time" value="{{startTime}}" start="09:00" end="21:00" bindchange="startTimeChange">
+      <view class="picker">
+        选择开始时间: {{startTime}}
+      </view>
+    </picker>
+  </view>
+  <view class='panel'>
+    <picker mode="time" value="{{endTime}}" start="09:00" end="21:00" bindchange="endTimeChange">
+      <view class="picker">
+        选择结束时间: {{endTime}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='panel'>
+    <button catchtap='reserve'>预定</button>
   </view>
 </view>

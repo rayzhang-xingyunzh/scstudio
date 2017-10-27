@@ -22,7 +22,7 @@ Page({
       wx.getStorage({
         key: 'user',
         success: function(res) {
-          if(!!res.tel){
+          if(!!res.data.tel){
             wx.navigateTo({
               url: '/pages/reservation/index',
             })
