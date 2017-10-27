@@ -7,23 +7,25 @@
     <input class="date-picker"/>
   </view>
   <view class="reservation">
-    <view class="corner-header">
+    <view class="corner-header" style='width:{{horizontalHeaderWidth}}rpx'>
 
     </view>
-    <scroll-view scroll-x="true" class="vertical-header-wrapper">
+    <scroll-view scroll-x="true" style='width:{{750 - horizontalHeaderWidth}}rpx' class="vertical-header-wrapper">
       <view class="vertical-headers" style="width:{{verticalHeaders.length * verticalHeaderWidth}}rpx">
         <view wx:for="{{verticalHeaders}}" wx:key="" class='vertical-header' style='width:{{verticalHeaderWidth}}rpx'>
           {{item}}
         </view>
       </view>
     </scroll-view>
-    <scroll-view scroll-y="true" class="horizontal-header-wrapper">
+    <scroll-view scroll-y="true" style='width:{{horizontalHeaderWidth}}rpx' class="horizontal-header-wrapper">
       <view class="horizontal-headers">
-
+        <view style='height:{{horizontalHeaderHeight}}rpx' class='horizontal-header' wx:for="{{horizontalHeaders}}" wx:key="">
+          {{item.label}}
+        </view>
       </view>
     </scroll-view>
 
-    <scroll-view class="offers-wrapper">
+    <scroll-view style='width:{{750 - horizontalHeaderWidth}}rpx' class="offers-wrapper">
       <view class="offers">
 
       </view>

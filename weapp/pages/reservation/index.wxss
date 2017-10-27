@@ -25,14 +25,14 @@ page{
 
 .corner-header{
   /* float: left; */
-  width: 100rpx;
+  /* width: 100rpx; */
   height: 100rpx;
   background-color: lightblue;
 }
 
 .vertical-header-wrapper{
   /* float: left; */
-  width: 650rpx;
+  /* width: 650rpx; */
   height: 100rpx;
   background-color: lightgreen;
 }
@@ -57,21 +57,21 @@ page{
   background-color: lightgreen;
 }
 
-.horizontal-header{
-  width: 100rpx;
+.horizontal-headers{
+  width: 100%;
   height: auto;
 }
 
-.horizontal-header-cell{
+.horizontal-header{
   height: 50rpx;
-  width: 100rpx;
+   width: 100%; 
 }
 
 .offers-wrapper{
   /*margin-top: 100px;*/
   overflow: scroll;
   float: left;
-  width: calc(100% - 100rpx);
+  /* width: calc(100% - 100rpx); */
   height: calc(100% - 100rpx);
   background-color: wheat;
 }

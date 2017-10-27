@@ -1,6 +1,8 @@
 <view>
-  <view wx:for="{{reservations}}" wx:key="">
-    {{item.id}} {{item.resource.name}} {{item.state}}
-    <button hidden='{{item.state=="cancelled"}}' data-id="{{item.id}}" catchtap='cancelReservation'>取消预定</button>
+  <view class='panel' wx:for="{{reservations}}" wx:key="">
+    预订单编号：{{item.Reservation.id}} 
+    资源名字：{{item.Resource.name}} 
+    预订单状态：{{stateName[item.Reservation.state]}}
+    <button hidden='{{item.Reservation.state=="cancelled"}}' data-id="{{item.Reservation.id}}" catchtap='cancelReservation'>取消预定</button>
   </view>
 </view>

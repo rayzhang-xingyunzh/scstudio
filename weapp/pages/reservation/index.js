@@ -1,5 +1,6 @@
 // pages/reservation/index.js
 import config from '../../etc/config'
+let network = require('../../utils/network')
 
 Page({
 
@@ -10,6 +11,8 @@ Page({
     horizontalHeaders:[],
     verticalHeaders:[],
     // verticalHeadersWidth:650,
+    horizontalHeaderWidth:150,
+    horizontalHeaderHeight: 100,
     verticalHeaderWidth:150,
     resources:[],
     offers:[],
@@ -49,13 +52,24 @@ Page({
   },
 
   getResources:function(callback){
-    let res = ["res1", "res2", "res3", "res4", "res5", "res6", "res7", "res8"]
-    this.setData({
-      resources: res,
-      verticalHeaders: res,
-      verticalHeadersWidth:res.length * 100
+    network.resources((err,res)=>{
+      if (res.length * this.data.verticalHeaderWidth < 750 - this.data.horizontalHeaderWidth){
+        console.log('bugou')
+        this.setData({
+          verticalHeaderWidth: (750 - this.data.horizontalHeaderWidth)/res.length
+        })
+      }
+
+      this.setData({
+        resources: res,
+        verticalHeaders: res.map((item)=>{
+          return item.name
+        }),
+        verticalHeadersWidth: res.length * this.data.verticalHeaderWidth
+      })
+      callback()
     })
-    callback()
+    
   },
 
   generateHorizontalHeaders:function(){
@@ -69,11 +83,15 @@ Page({
     while (!(time.getHours() >= config.endTime.hour
       && time.getMinutes() >= config.endTime.minute)) {
       console.log(time);
-      hhs.push(new Date(time));
+      let hh = {
+        date:new Date(time),
+        label:time.getHours() + ':' + time.getMinutes()
+      }
+      hhs.push(hh);
 
       time = new Date(time.getTime() + config.granularity * 60000)
     }
-
+    console.log(hhs);
     return hhs
   },
   /**
