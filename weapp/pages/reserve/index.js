@@ -24,7 +24,8 @@ Page({
       }else{
         console.log(res)
         this.setData({
-          resources:res
+          resources:res,
+          resource:res[0]
         })
       }
       
@@ -67,6 +68,9 @@ Page({
   },
 
   reserve:function(){
+    wx.showLoading({
+      title: '正在预定...',
+    })
     wx.getStorage({
       key: 'user',
       success: (res)=> {
@@ -82,6 +86,7 @@ Page({
         console.log(reservation)
 
         network.reserve(reservation, (err,res) => {
+          wx.hideLoading()
           if(err){
             wx.showModal({
               title: '失败',
@@ -90,10 +95,24 @@ Page({
             })
             console.log(err)
           }else{
-            wx.showToast({
-              title: '成功',
-            })
             console.log(res)
+            let reservation = res.Reservation
+            if (reservation.surety > 0){
+              let query = "";
+
+              for (var key in reservation) {
+                query += key + "=" + reservation[key] + '&';
+              }
+              console.log(query)
+              wx.navigateTo({
+                url: '/pages/payment/index?' + query,
+              })
+            }else{
+              wx.showToast({
+                title: '成功',
+              })
+            }
+
           }
         })
       },

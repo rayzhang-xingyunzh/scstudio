@@ -66,6 +66,52 @@ function resources(callback){
   sendReq(options,false)
 }
 
+function pay(payment,callback){
+  let options = {
+    method: 'POST',
+    url: baseUrl + '/pay/wxpay/' + payment.ordernumber,
+    data: {
+
+    },
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options, false)
+}
+
+function preparePayment(preperation,callback){
+  let options = {
+    method: 'POST',
+    url: baseUrl + '/pay/wxprepare/' + preperation.ordernumber,
+    data: {
+
+    },
+    success: function (res) {
+      if (res.data.status == "S") {
+        callback(null, res.data.body)
+      } else {
+        callback(res.data.body)
+      }
+    },
+    fail: function (err) {
+      console.log(err)
+      callback(err)
+    }
+  }
+
+  sendReq(options, false)
+}
+
 function reserve(reservation,callback){
   let options = {
     method:'POST',
@@ -76,7 +122,6 @@ function reserve(reservation,callback){
       end_time:reservation.endTime,
       user_id:reservation.userid,
       state:"to_be_paid",
-      payment_type:"weapp",
       surety:reservation.surety
     },
     success: function (res) {
@@ -235,5 +280,7 @@ module.exports = {
   resources:resources,
   reserve:reserve,
   myReservation: myReservation, 
-  updateRerservation: updateRerservation
+  updateRerservation: updateRerservation,
+  preparePayment: preparePayment,
+  pay: pay
 }

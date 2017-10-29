@@ -3,7 +3,7 @@
     <label>资源</label>
     <radio-group class="radio-group" bindchange="resourceChange">
       <label class="radio" wx:key="" wx:for="{{resources}}">
-        <radio value="{{item.id}}" checked="{{index == 0}}" />{{item.name}}
+        <radio value="{{item.id}}" checked="{{item.id == resource.id}}" />{{item.name}}
       </label>
     </radio-group>
   </view>
@@ -32,4 +32,5 @@
   <view class='panel'>
     <button catchtap='reserve'>预定</button>
   </view>
+
 </view>

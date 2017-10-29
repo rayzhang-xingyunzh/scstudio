@@ -1,0 +1,4 @@
+/* pages/payment/index.wxss */
+.panel{
+  margin:40rpx;
+}

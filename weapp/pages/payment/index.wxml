@@ -1,0 +1,24 @@
+<view>
+  <view class='panel'>
+    <label>支付单号</label>
+    <text>{{payment.ordernumber}}</text>
+  </view>
+
+  <view class='panel'>
+  <label>商品描述</label>
+    <text>{{payment.body}}</text>
+  </view>
+  <view class='panel'>
+    <label>支付金额</label>
+    <text>{{payment.cash_fee}}{{payment.fee_type}}</text>
+  </view>
+
+
+  <view class='panel'>
+    <button catchtap='pay'>支付</button>
+  </view>
+
+      <view class='panel'>
+    <button catchtap='cancelReservation'>取消预定</button>
+  </view>
+</view>

@@ -5,7 +5,8 @@
     "pages/reservation/index",
     "pages/myreservation/index",
     "pages/reserve/index",
-    "pages/phone/index"
+    "pages/phone/index",
+    "pages/payment/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
