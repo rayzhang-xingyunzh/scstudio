@@ -1,6 +1,6 @@
 
 // var baseUrl = 'https://www.camproz.com/clockin';
-var baseUrl = 'http://localhost:7112';
+var baseUrl = 'https://www.camproz.com/reserve';
 
 function updateRerservation(updates,callback){
   console.log(updates)
@@ -69,7 +69,7 @@ function resources(callback){
 function pay(payment,callback){
   let options = {
     method: 'POST',
-    url: baseUrl + '/pay/wxpay/' + payment.ordernumber,
+    url: baseUrl + '/pay/wx/order/' + payment.ordernumber,
     data: {
 
     },
@@ -92,9 +92,11 @@ function pay(payment,callback){
 function preparePayment(preperation,callback){
   let options = {
     method: 'POST',
-    url: baseUrl + '/pay/wxprepare/' + preperation.ordernumber,
+    url: baseUrl + '/pay/wx/prepare/' + preperation.ordernumber,
     data: {
-
+      body: preperation.body,
+      total_fee: preperation.fee,
+      openid:preperation.openid
     },
     success: function (res) {
       if (res.data.status == "S") {

@@ -22,25 +22,36 @@ Page({
     wx.showLoading({
       title: '准备支付...',
     })
-    let preperation = {
-      ordernumber: options.ordernumber
-    }
 
-    network.preparePayment(preperation, (err, res) => {
-      wx.hideLoading()
-
-      if (err) {
-        console.log(err)
-        wx.navigateBack({
-          
-        })
-      } else {
+    wx.getStorage({
+      key: 'user',
+      success: (res)=> {
         console.log(res)
-        this.setData({
-          payment: res
+        let preperation = {
+          ordernumber: options.ordernumber,
+          fee: 1,
+          body: "星云创新工作室-访问预定",
+          openid:res.data.openid
+        }
+
+        network.preparePayment(preperation, (err, res) => {
+          wx.hideLoading()
+
+          if (err) {
+            console.log(err)
+            wx.navigateBack({
+              delta: 1
+            })
+          } else {
+            console.log(res)
+            this.setData({
+              payment: res
+            })
+          }
         })
-      }
+      },
     })
+
   },
 
   cancelReservation: function () {
@@ -56,19 +67,22 @@ Page({
         console.log(err)
       } else {
         console.log(res)
-        wx.requestPayment({
-          timeStamp: res.timeStamp,
+
+        let options = {
+          timeStamp: "" + res.timeStamp,
           nonceStr: res.nonceStr,
-          package: res.package,
+          "package": res.package,
           signType: res.signType,
           paySign: res.paySign,
-          success:(res)=>{
+          success: (res) => {
             console.log(res)
           },
           fail: (res) => {
             console.log(res)
           }
-        })
+        }
+        console.log(options)
+        wx.requestPayment(options)
       }
     })
 
